@@ -874,7 +874,7 @@ async def to_code(config):
                     f"auto {navleft_variable} = "
                     f"{unique_ptr.template(NavigationItem)}({navleft_statement})"))
                 cg.add(card_class.set_nav_left(cg.global_ns.class_(navleft_variable)))
-        else:
+        elif visible_card_count > 1:
             visible_index += 1
             navleft_variable = card_variable + "_navleft"
             navleft_statement = cg.RawStatement(f'new {NavigationItem}(\"{get_new_uuid()}\", \"{prev_card_uuid}\", {navleft_icon_value})')
