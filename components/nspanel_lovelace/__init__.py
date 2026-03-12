@@ -866,9 +866,7 @@ async def to_code(config):
 
         if card_config[CONF_CARD_HIDDEN] == True:
             cg.add(card_class.set_hidden(True))
-            home_uuid = screensaver_uuid
-            if screensaver_uuid is None:
-                home_uuid = visible_card_uuids[0] if visible_card_count > 0 else None
+            home_uuid = visible_card_uuids[0] if visible_card_count > 0 else screensaver_uuid
             if home_uuid != None:
                 navleft_variable = card_variable + "_navhome"
                 navleft_statement = cg.RawStatement(f'new {NavigationItem}(\"{get_new_uuid()}\", \"{home_uuid}\", {navhome_icon_value})')
